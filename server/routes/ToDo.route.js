@@ -14,10 +14,10 @@ router.get('/', ToDoController.getAllToDos);
 router.get('/:id', ToDoController.getToDoById);
 
 // Update a ToDo's description by ID
-router.put('/:id/description', ToDoController.updateToDoDescription);
+router.patch('/:id/description', ToDoController.updateToDoDescription);
 
 // Update a ToDo's completion status by ID
-router.put('/:id/completion', ToDoController.updateToDoCompletion);
+router.patch('/:id/completion', ToDoController.updateToDoCompletion);
 
 // Delete a ToDo by ID
 router.delete('/:id', ToDoController.deleteToDo);

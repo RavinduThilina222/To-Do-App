@@ -41,13 +41,10 @@ exports.getToDoById = async (req, res) => {
 // Update a ToDo by ID
 exports.updateToDoDescription = async (req, res) => {
     try {
-        const { description } = req.body;
+        const updateFields = { ...req.body, updatedAt: Date.now() };
         const todo = await ToDo.findByIdAndUpdate(
             req.params.id,
-            {
-                description,
-                updatedAt: Date.now(),
-            },
+            { $set: updateFields },
             { new: true }
         );
         if (!todo) {
@@ -59,15 +56,13 @@ exports.updateToDoDescription = async (req, res) => {
     }
 };
 
-// Update a ToDo's complete as true by ID
+// Update a ToDo's completion status by ID (PATCH: update only provided fields)
 exports.updateToDoCompletion = async (req, res) => {
     try {
+        const updateFields = { ...req.body, updatedAt: Date.now() };
         const todo = await ToDo.findByIdAndUpdate(
             req.params.id,
-            {
-                completed: true,
-                updatedAt: Date.now(),
-            },
+            { $set: updateFields },
             { new: true }
         );
         if (!todo) {

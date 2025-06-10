@@ -40,9 +40,10 @@ function App() {
   const [updateTodo] = useUpdateTodoMutation();
   const [deleteTodo] = useDeleteTodoMutation();
 
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', darkMode);
-  }, [darkMode]);
+  // Remove dark mode effect
+  // useEffect(() => {
+  //   document.documentElement.classList.toggle('dark', darkMode);
+  // }, [darkMode]);
 
   const filteredTodos = todos.filter(todo => {
     const matchesSearch = todo.description.toLowerCase().includes(searchTerm.toLowerCase());
@@ -83,10 +84,10 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen bg-gray-50 dark:bg-gray-900 py-8 transition-colors">
-      <div className="w-full max-w-2xl bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
-        <div className="p-6 border-b border-gray-100 dark:border-gray-700 transition-colors">
-          <h1 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-100 mb-6 transition-colors">TODO LIST</h1>
+    <div className="flex flex-col items-center justify-start min-h-screen bg-gray-50 py-8 transition-colors">
+      <div className="w-full max-w-2xl bg-white rounded-lg shadow-sm border border-gray-200 transition-colors">
+        <div className="p-6 border-b border-gray-100 transition-colors">
+          <h1 className="text-2xl font-bold text-center text-gray-800 mb-6 transition-colors">TODO LIST</h1>
           <div className="flex gap-3 mb-4">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
@@ -95,7 +96,7 @@ function App() {
                 placeholder="Search note..."
                 value={searchTerm}
                 onChange={(e) => dispatch(setSearchTerm(e.target.value))}
-                className="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-900 dark:text-gray-100 transition-colors"
+                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-800 transition-colors"
               />
             </div>
             <select
@@ -108,7 +109,7 @@ function App() {
               <option value="COMPLETED">COMPLETED</option>
             </select>
             <button
-              className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              className="p-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
               onClick={() => dispatch(setDarkMode(!darkMode))}
               aria-label="Toggle dark mode"
             >

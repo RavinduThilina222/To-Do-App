@@ -27,7 +27,7 @@ export const todosApi = createApi({
     }),
     toggleTodo: builder.mutation<void, { id: string; completed: boolean }>({
       query: ({ id, completed }) => ({
-        url: `/todos/${id}`,
+        url: `/todos/${id}/completion`,
         method: 'PATCH',
         body: { completed },
       }),
@@ -35,7 +35,7 @@ export const todosApi = createApi({
     }),
     updateTodo: builder.mutation<void, { id: string; description: string }>({
       query: ({ id, description }) => ({
-        url: `/todos/${id}`,
+        url: `/todos/${id}/description`,
         method: 'PATCH',
         body: { description },
       }),

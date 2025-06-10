@@ -32,16 +32,13 @@ const TodoList: React.FC<TodoListProps> = ({
 }) => (
   <div className="space-y-3">
     {todos.map((todo) => (
-      <div
-        key={todo._id}
-        className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-      >
+      <div key={todo._id} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
         <button
           onClick={() => toggleTodo(todo._id, todo.completed)}
           className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
             todo.completed
               ? 'bg-blue-500 border-blue-500'
-              : 'border-gray-300 dark:border-gray-600 hover:border-blue-400'
+              : 'border-gray-300 hover:border-blue-400'
           }`}
         >
           {todo.completed && (
@@ -56,19 +53,19 @@ const TodoList: React.FC<TodoListProps> = ({
               type="text"
               value={editText}
               onChange={(e) => setEditText(e.target.value)}
-              className="flex-1 px-3 py-1 border border-gray-300 dark:border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-900 dark:text-gray-100"
+              className="flex-1 px-3 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               onKeyPress={(e) => e.key === 'Enter' && saveEdit(todo._id)}
               autoFocus
             />
             <button
               onClick={() => saveEdit(todo._id)}
-              className="px-3 py-1 bg-green-500 text-white rounded text-sm hover:bg-green-600 transition-colors"
+              className="px-3 py-1 bg-green-500 text-white rounded text-sm hover:bg-green-600"
             >
               Save
             </button>
             <button
               onClick={cancelEdit}
-              className="px-3 py-1 bg-gray-500 text-white rounded text-sm hover:bg-gray-600 transition-colors"
+              className="px-3 py-1 bg-gray-500 text-white rounded text-sm hover:bg-gray-600"
             >
               Cancel
             </button>
@@ -76,20 +73,20 @@ const TodoList: React.FC<TodoListProps> = ({
         ) : (
           <>
             <span className={`flex-1 font-medium ${
-              todo.completed ? 'text-gray-500 dark:text-gray-400 line-through' : 'text-gray-800 dark:text-gray-100'
+              todo.completed ? 'text-gray-500 line-through' : 'text-gray-800'
             }`}>
               {todo.description}
             </span>
             <div className="flex gap-1">
               <button
                 onClick={() => startEditing(todo._id, todo.description)}
-                className="p-1 text-gray-400 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+                className="p-1 text-gray-400 hover:text-blue-500 transition-colors"
               >
                 <Edit3 className="w-4 h-4" />
               </button>
               <button
                 onClick={() => deleteTodo(todo._id)}
-                className="p-1 text-gray-400 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors"
+                className="p-1 text-gray-400 hover:text-red-500 transition-colors"
               >
                 <Trash2 className="w-4 h-4" />
               </button>
